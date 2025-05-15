@@ -2,3 +2,6 @@ numpy
 pandas
 pathlib
 logging
+joblib
+scikit-learn
+category_encoders

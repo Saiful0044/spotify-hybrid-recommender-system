@@ -46,6 +46,7 @@ def clean_data(data: pd.DataFrame) -> pd.DataFrame:
         .reset_index(drop=True)
     )
 
+
 # save data
 def save_data(data: pd.DataFrame, file_path: Path)->None:
     try:
@@ -66,13 +67,19 @@ if __name__=="__main__":
     songs_data_path = root_path/'data'/'raw'/'songs_data.csv'
     songs_data = load_data(file_path=songs_data_path)
 
+    # cleaned data
+    cleaned_data = clean_data(songs_data)
+    logger.info("Data Cleaned Successfully")
 
     # data save directory
     data_save_dir = root_path/'data'/'cleaned'
     data_save_dir.mkdir(exist_ok=True,parents=True)
     cleaned_data_filename = 'songs_cleaned_data.csv'
     save_data_path = data_save_dir/cleaned_data_filename
-    save_data(data=songs_data, file_path=save_data_path)
+    save_data(data=cleaned_data, file_path=save_data_path)
+
+    
+
 
 
 

@@ -9,10 +9,30 @@ stages:
       size: 14985867
     - path: src/data/data_cleaning.py
       hash: md5
-      md5: 187bd2ff47c20af476a32fcbe6a57c2b
-      size: 2177
+      md5: 5f22391605759621cd62eb8c74c14f1b
+      size: 2300
     outs:
     - path: data/cleaned/songs_cleaned_data.csv
       hash: md5
-      md5: 8110914a6f0530390ef939559ad8c2ba
-      size: 15036551
+      md5: ad73ab9b7c97fed0f3cc26fc9b24f8c6
+      size: 13712182
+  data_preprocessing:
+    cmd: python src/features/data_preprocessing.py
+    deps:
+    - path: data/cleaned/songs_cleaned_data.csv
+      hash: md5
+      md5: ad73ab9b7c97fed0f3cc26fc9b24f8c6
+      size: 13712182
+    - path: src/features/data_preprocessing.py
+      hash: md5
+      md5: 68eef32da8aba915c825e46fcf276d14
+      size: 4452
+    outs:
+    - path: data/processed/transformed_data.npz
+      hash: md5
+      md5: 7940d8ee5fde91781504ff55bc36b9e2
+      size: 4518613
+    - path: models/preprocessor.joblib
+      hash: md5
+      md5: 58f9a331b9f0418e41a2daabe9fde170
+      size: 140705
